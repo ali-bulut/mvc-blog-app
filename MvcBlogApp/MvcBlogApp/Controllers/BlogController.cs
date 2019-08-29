@@ -18,7 +18,7 @@ namespace MvcBlogApp.Controllers
         public ActionResult Index()
         {
             //her bloğun kategori bilgisi blogs listesine dahil edilip gelir
-            var blogs = db.Blogs.Include(b => b.Category);
+            var blogs = db.Blogs.Include(b => b.Category).OrderByDescending(i=>i.UploadDate);
             return View(blogs.ToList());
         }
 
@@ -47,10 +47,12 @@ namespace MvcBlogApp.Controllers
         // POST: Blog/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Explanation,Image,Content,UploadDate,Confirmation,IsHomepage,CategoryId")] Blog blog)
+        public ActionResult Create([Bind(Include = "Title,Explanation,Image,Content,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
+                blog.UploadDate = DateTime.Now;
+
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");

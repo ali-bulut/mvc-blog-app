@@ -17,7 +17,7 @@ namespace MvcBlogApp.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            var categories = db.Categories.Include(i => i.Blogs);
+            var categories = db.Categories.Include(i => i.Blogs).OrderByDescending(i => i.Blogs.Count);
             return View(categories.ToList());
         }
 
@@ -45,7 +45,7 @@ namespace MvcBlogApp.Controllers
         // POST: Category/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CategoryName")] Category category)
+        public ActionResult Create([Bind(Include = "CategoryName")] Category category)
         {
             if (ModelState.IsValid)
             {
