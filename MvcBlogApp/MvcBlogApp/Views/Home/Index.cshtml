@@ -1,12 +1,59 @@
 ﻿@*controllerdan bu sayfaya bir liste gönderdiğimiz için Ienumarable içine aldık diğer türlü foreachle dönemezdik*@
-@model IEnumerable<MvcBlogApp.Models.Blog>
+@model IEnumerable<MvcBlogApp.Models.BlogModel>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Blog Listesi</h2>
 
-@foreach (var item in Model)
-{
-    <p>@item.Title</p>
-}
+<div class="row">
+    <div class="col-md-8">
+        @foreach (var item in Model)
+        {
+            <div class="blog">
+            <h3 class="page-header">
+                @item.Title
+            </h3>
+
+            <p>
+                <span class="glyphicon glyphicon-time"></span>
+                @item.UploadDate.Date.Day.@item.UploadDate.Date.Month.@item.UploadDate.Date.Year
+            </p>
+            <hr />
+            <img class="img-responsive" src="http://placehold.it/900x300" />
+            <hr />
+            <p>
+                @item.Explanation
+            </p>
+            <button class="btn btn-primary">Daha Fazla...</button>
+        </div>
+        }       
+    </div>
+    <div class="col-md-4">
+        <div class="well">
+            <h4>Blog Arama</h4>
+            <hr />
+            <div class="input-group">
+                @Html.TextBox("q", null, new { @class = "form-control" })
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="well">
+            <h4>Blog Arama</h4>
+            <hr />
+            <div class="input-group">
+                @Html.TextBox("q", null, new { @class = "form-control" })
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
