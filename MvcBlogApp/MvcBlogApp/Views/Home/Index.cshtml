@@ -1,7 +1,12 @@
-﻿
+﻿@*controllerdan bu sayfaya bir liste gönderdiğimiz için Ienumarable içine aldık diğer türlü foreachle dönemezdik*@
+@model IEnumerable<MvcBlogApp.Models.Blog>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+@foreach (var item in Model)
+{
+    <p>@item.Title</p>
+}

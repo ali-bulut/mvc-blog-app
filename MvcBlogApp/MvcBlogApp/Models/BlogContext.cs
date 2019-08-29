@@ -8,6 +8,10 @@ namespace MvcBlogApp.Models
 {
     public class BlogContext:DbContext
     {
+        public BlogContext():base("blogConnection")
+        {
+            Database.SetInitializer(new BlogInitializer());
+        }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
     }

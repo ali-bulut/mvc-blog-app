@@ -67,3 +67,7 @@ C:\Workspace\Mvc Blog App\mvc-blog-app\MvcBlogApp\MvcBlogApp\obj\Debug\MvcBlogAp
 C:\Workspace\Mvc Blog App\mvc-blog-app\MvcBlogApp\MvcBlogApp\obj\Debug\MvcBlogApp.csproj.CopyComplete
 C:\Workspace\Mvc Blog App\mvc-blog-app\MvcBlogApp\MvcBlogApp\obj\Debug\MvcBlogApp.dll
 C:\Workspace\Mvc Blog App\mvc-blog-app\MvcBlogApp\MvcBlogApp\obj\Debug\MvcBlogApp.pdb
+C:\Workspace\Mvc Blog App\mvc-blog-app\MvcBlogApp\MvcBlogApp\bin\EntityFramework.dll
+C:\Workspace\Mvc Blog App\mvc-blog-app\MvcBlogApp\MvcBlogApp\bin\EntityFramework.SqlServer.dll
+C:\Workspace\Mvc Blog App\mvc-blog-app\MvcBlogApp\MvcBlogApp\bin\EntityFramework.xml
+C:\Workspace\Mvc Blog App\mvc-blog-app\MvcBlogApp\MvcBlogApp\bin\EntityFramework.SqlServer.xml

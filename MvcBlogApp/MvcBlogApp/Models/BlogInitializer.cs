@@ -23,6 +23,8 @@ namespace MvcBlogApp.Models
                 context.Categories.Add(item);
             }
 
+            context.SaveChanges();
+
             List<Blog> blogs = new List<Blog>()
             {
                 new Blog(){Title="C# Delegates", Explanation="C# Delegates Hakkında Önemli Bilgiler", UploadDate=DateTime.Now.AddDays(-10), IsHomepage=true, Confirmation=true, Content="Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.", Image="1.jpg", CategoryId=1},
