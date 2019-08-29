@@ -1,0 +1,90 @@
+﻿@*IEnumarable denmesinin sebebi blog türünde birden fazla kaydın olmasıdır*@
+@model IEnumerable<MvcBlogApp.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Blog Listesi</h2>
+<hr />
+<p>
+    @Html.ActionLink("Yeni Blog Ekle", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<hr />
+
+@if (TempData["Blog"] != null)
+{
+    var blog = (MvcBlogApp.Models.Blog)TempData["Blog"];
+
+    <div class="alert alert-success" role="alert">
+        <strong><span class="glyphicon glyphicon-ok" style="margin-right:3px;"></span>@blog.Title</strong> Kayıt Edildi
+    </div>
+}
+
+
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Confirmation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsHomepage)
+        </th>
+        <th style="width:165px;"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+            <td>
+                @if (item.Confirmation)
+                {
+                    <label class="label label-success">Onaylı</label>
+                }
+                else
+                {
+                    <label class="label label-warning">Onay Bekliyor</label>
+                }
+            </td>
+            <td>
+                @if (item.IsHomepage)
+                {
+                    <label class="label label-success">Post Anasayfada Gösteriliyor</label>
+                }
+                else
+                {
+                    <label class="label label-danger">Post Anasayfada Gösterilmiyor</label>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning    btn-xs" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>
