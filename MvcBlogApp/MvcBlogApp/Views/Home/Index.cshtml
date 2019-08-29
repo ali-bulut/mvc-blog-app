@@ -25,7 +25,7 @@
             <p>
                 @item.Explanation
             </p>
-            <button class="btn btn-primary">Daha Fazla...</button>
+                @Html.ActionLink("Daha Fazla...","Details","Blog",new { id=item.Id},new { @class="btn btn-primary"})
         </div>
         }       
     </div>
