@@ -6,30 +6,29 @@
 
 <h2>Blog Listesi</h2>
 
-<div class="row">
-    <div class="col-md-8">
-        @foreach (var item in Model)
-        {
-            <div class="blog">
-            <h3 class="page-header">
-                @item.Title
-            </h3>
+@foreach (var item in Model)
+{
+    <div class="blog">
+        <h3 class="page-header">
+            @item.Title
+        </h3>
 
-            <p>
-                <span class="glyphicon glyphicon-time"></span>
-                @item.UploadDate.Date.Day.@item.UploadDate.Date.Month.@item.UploadDate.Date.Year
-            </p>
-            <hr />
-            <img class="img-responsive" src="http://placehold.it/900x300" />
-            <hr />
-            <p>
-                @item.Explanation
-            </p>
-                @Html.ActionLink("Daha Fazla...","Details","Blog",new { id=item.Id},new { @class="btn btn-primary"})
-        </div>
-        }       
+        <p>
+            <span class="glyphicon glyphicon-time"></span>
+            @item.UploadDate.Date.Day.@item.UploadDate.Date.Month.@item.UploadDate.Date.Year
+        </p>
+        <hr />
+        <img class="img-responsive" src="http://placehold.it/900x300" />
+        <hr />
+        <p>
+            @item.Explanation
+        </p>
+        @Html.ActionLink("Daha Fazla...", "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-primary" })
     </div>
-    <div class="col-md-4">
+}
+
+@section RightColumn{
+    <div style="margin-top:20px;">
         <div class="well">
             <h4>Blog Arama</h4>
             <hr />
@@ -55,5 +54,6 @@
             </div>
         </div>
     </div>
-</div>
+}
+
 

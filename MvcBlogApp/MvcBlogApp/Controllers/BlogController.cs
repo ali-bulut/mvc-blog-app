@@ -119,6 +119,7 @@ namespace MvcBlogApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Blog blog = db.Blogs.Find(id);
+            
             if (blog == null)
             {
                 return HttpNotFound();
