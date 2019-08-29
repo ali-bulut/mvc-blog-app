@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcBlogApp.Models.BlogModel>
+
+
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-warning">
+        <h3>Kayıt Bulunamadı</h3>
+    </div>
+}
+else
+{
+
+
+
+    foreach (var item in Model)
+    {
+        <div class="blog">
+            <h3 class="page-header">
+                @item.Title
+            </h3>
+
+            <p>
+                <span class="glyphicon glyphicon-time"></span>
+                @item.UploadDate.Date.Day.@item.UploadDate.Date.Month.@item.UploadDate.Date.Year
+            </p>
+            <hr />
+            <img class="img-responsive" src="http://placehold.it/900x300" />
+            <hr />
+            <p>
+                @item.Explanation
+            </p>
+            @Html.ActionLink("Daha Fazla...", "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-primary" })
+        </div>
+    }
+}
