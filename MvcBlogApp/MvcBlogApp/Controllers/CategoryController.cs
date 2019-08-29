@@ -17,7 +17,8 @@ namespace MvcBlogApp.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            var categories = db.Categories.Include(i => i.Blogs);
+            return View(categories.ToList());
         }
 
         // GET: Category/Details/5
