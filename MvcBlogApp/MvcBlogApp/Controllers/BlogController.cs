@@ -81,14 +81,32 @@ namespace MvcBlogApp.Controllers
         // POST: Blog/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Explanation,Image,Content,UploadDate,Confirmation,IsHomepage,CategoryId")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,Title,Explanation,Image,Content,Confirmation,IsHomepage,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(blog).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var entity = db.Blogs.Find(blog.Id);
+                if (entity!=null)
+                {
+                    entity.Title = blog.Title;
+                    entity.Explanation = blog.Explanation;
+                    entity.Image = blog.Image;
+                    entity.Content = blog.Content;
+                    entity.Confirmation = blog.Confirmation;
+                    entity.IsHomepage = blog.IsHomepage;
+                    entity.CategoryId = blog.CategoryId;
+
+                    db.SaveChanges();
+
+                    //viewbag yerine tempdata kullanıyoruz çünkü redirectoaction dendiğinde viewbag içindeki bilgiler
+                    //sıfırlanırken tempdatadakiler sıfırlanmaz
+                    TempData["Blog"] = entity;
+
+                    return RedirectToAction("Index");
+                }
+                
             }
+
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", blog.CategoryId);
             return View(blog);
         }
