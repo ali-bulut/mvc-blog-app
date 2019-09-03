@@ -1,1 +1,2 @@
-*.ps1 linguist-language=Asp
+* linguist-vendored
+*.asp linguist-vendored=false
